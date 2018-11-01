@@ -11,7 +11,9 @@ import {BrowserRouter, Redirect, Switch, Route} from 'react-router-dom'
 import Register from './page/Register/Register'
 import AuthorRouter from './page/AuthorRouter/AuthorRouter'
 import Login from './page/Login/Login'
-import Info from './page/Info/Info'
+import Dashboard from './page/Dashboard/Dashboard'
+import GeniusInfo from './page/GeniusInfo/GeniusInfo'
+import BossInfo from './page/BossInfo/BossInfo'
 
 
 /**
@@ -40,11 +42,13 @@ function render () {
       <BrowserRouter>
         <div>
           <AuthorRouter></AuthorRouter>
-          <Route path='/register' component={Register}></Route>
-          <Route path='/login' component={Login}></Route>
-          <Route path='/geniusInfo' type="genius" component={Info}></Route>
-          <Route path='/bossInfo' type="boss" component={Info}></Route>
-          <Redirect to='/login'></Redirect>
+          <Switch>
+            <Route path='/bossInfo' component={BossInfo}></Route>
+            <Route path='/geniusInfo' component={GeniusInfo}></Route>
+            <Route path='/login' component={Login}></Route>
+            <Route path='/register' component={Register}></Route>
+            <Route component={Dashboard}></Route>
+          </Switch>
         </div>
       </BrowserRouter>
     </Provider>)
